@@ -5,7 +5,13 @@
 	<artifactId>seleniumtests</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Selenium Tests</name>
-
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -39,7 +45,7 @@
 			<version>1.7.21</version>
 		</dependency>
 		<dependency>
-		<groupId>org.slf4j</groupId>
+			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.21</version>
 		</dependency>
@@ -50,6 +56,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<reportsDirectory>test-output/${timestamp}</reportsDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
